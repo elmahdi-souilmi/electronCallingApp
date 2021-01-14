@@ -28,21 +28,21 @@
                 <div class="buttons">
 
                     <input type="button" class="grid-item" id="1" onclick="show(this.id)" value="1">
-                    <input type="button" class="grid-item" id="2" onclick="show(this.id)" value="2">
-                    <input type="button" class="grid-item" id="3" onclick="show(this.id)" value="3">
+                    <input type="button" class="grid-item" id="2" onclick="show(this.id)" value="2 ABC">
+                    <input type="button" class="grid-item" id="3" onclick="show(this.id)" value="3 DEF">
 
 
-                    <input type="button" class="grid-item" id="4" onclick="show(this.id)" value="4">
-                    <input type="button" class="grid-item" id="5" onclick="show(this.id)" value="5">
-                    <input type="button" class="grid-item" id="6" onclick="show(this.id)" value="6">
+                    <input type="button" class="grid-item" id="4" onclick="show(this.id)" value="4 GHI">
+                    <input type="button" class="grid-item" id="5" onclick="show(this.id)" value="5 JKL">
+                    <input type="button" class="grid-item" id="6" onclick="show(this.id)" value="6 MNO">
 
 
-                    <input type="button" class="grid-item" id="7" onclick="show(this.id)" value="7">
-                    <input type="button" class="grid-item" id="8" onclick="show(this.id)" value="8">
-                    <input type="button" class="grid-item" id="9" onclick="show(this.id)" value="9">
+                    <input type="button" class="grid-item" id="7" onclick="show(this.id)" value="7 PQRS">
+                    <input type="button" class="grid-item" id="8" onclick="show(this.id)" value="8 TUV">
+                    <input type="button" class="grid-item" id="9" onclick="show(this.id)" value="9 WXYZ">
 
                     <input type="button" class="grid-item" id="*" onclick="show(this.id)" value="*">
-                    <input type="button" class="grid-item" id="0" onclick="show(this.id)" value="0">
+                    <input type="button" class="grid-item" id="0" onclick="show(this.id)" value="0 +">
                     <input type="button" class="grid-item" id="#" onclick="show(this.id)" value="#">
                     <p> </p>
                     <button class="call" id="call" onclick="call(document.getElementById('show').value)"> <i
@@ -60,7 +60,7 @@
             document.getElementById('show').addEventListener('input', update);
             function update(e) {
                 e.preventDefault();
-                const item = document.getElementById('show').value;
+                const item = document.getElementById('show').id;
 
                 console.log(item);
                 ipcRenderer.send('item:num', item);

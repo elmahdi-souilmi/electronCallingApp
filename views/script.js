@@ -1,12 +1,11 @@
 function show(id) {
-    let num = document.getElementById(id).value;
+    let num = document.getElementById(id).id;
     document.getElementById("show").value += num;
 }
 
 function del() {
     var a = document.getElementById("show").value;
-    a.value.slice(0, -1)
-    document.getElementById("show").value = a;
+    document.getElementById("show").value =a.slice(0, -1) ;
 }
 
 function call(num) {
@@ -16,7 +15,6 @@ function call(num) {
         ipcRenderer
     } = electron;
     var moment = require('moment');
-    // let time = Date.now.toString();
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
     console.log(num + time);
     ipcRenderer.send('item:call', num, time);
