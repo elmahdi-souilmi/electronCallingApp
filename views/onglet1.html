@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>phone call </title>
+</head>
+
+<body>
+    <div class="smartphone">
+        <div class="content">
+            <div class="screen">
+                <i class="fas fa-user-plus blue" id="addContact"> Add contact</i>
+                <div class="screen">
+                    <i class="fas fa-ellipsis-h blue"> More</i>
+                </div>
+                <hr>
+                <div class="screen"> <input class="show" id="show" type="text"> <button class="delete" onclick="del()">
+                        <i class="fas fa-backspace"></i> </button> </div>
+                <hr>
+                <div class="buttons">
+
+                    <input type="button" class="grid-item" id="1" onclick="show(this.id)" value="1">
+                    <input type="button" class="grid-item" id="2" onclick="show(this.id)" value="2">
+                    <input type="button" class="grid-item" id="3" onclick="show(this.id)" value="3">
+
+
+                    <input type="button" class="grid-item" id="4" onclick="show(this.id)" value="4">
+                    <input type="button" class="grid-item" id="5" onclick="show(this.id)" value="5">
+                    <input type="button" class="grid-item" id="6" onclick="show(this.id)" value="6">
+
+
+                    <input type="button" class="grid-item" id="7" onclick="show(this.id)" value="7">
+                    <input type="button" class="grid-item" id="8" onclick="show(this.id)" value="8">
+                    <input type="button" class="grid-item" id="9" onclick="show(this.id)" value="9">
+
+                    <input type="button" class="grid-item" id="*" onclick="show(this.id)" value="*">
+                    <input type="button" class="grid-item" id="0" onclick="show(this.id)" value="0">
+                    <input type="button" class="grid-item" id="#" onclick="show(this.id)" value="#">
+                    <p> </p>
+                    <button class="call" id="call" onclick="call(document.getElementById('show').value)"> <i
+                            class="fas fa-phone-alt"></i> </button>
+
+
+                </div>
+
+            </div>
+        </div>
+        <script>
+            const electron = require('electron');
+            const { ipcRenderer } = electron;
+
+            document.getElementById('show').addEventListener('input', update);
+            function update(e) {
+                e.preventDefault();
+                const item = document.getElementById('show').value;
+
+                console.log(item);
+                ipcRenderer.send('item:num', item);
+                console.log(ipcRenderer);
+
+            }
+        </script>
+    </div>
+    <script src="./script.js">
+
+    </script>
+
+</body>
+
+</html>
