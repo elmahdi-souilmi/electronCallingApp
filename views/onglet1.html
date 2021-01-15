@@ -56,12 +56,14 @@
         <script>
             const electron = require('electron');
             const { ipcRenderer } = electron;
-
-            document.getElementById('show').addEventListener('input', update);
+            var buttons = document.getElementsByClassName("grid-item")
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', update, false);
+            }
+            // document.getElementById('show').addEventListener('input', update);
             function update(e) {
                 e.preventDefault();
-                const item = document.getElementById('show').id;
-
+                const item = document.getElementById('show').value;
                 console.log(item);
                 ipcRenderer.send('item:num', item);
                 console.log(ipcRenderer);
